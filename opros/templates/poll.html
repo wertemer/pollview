@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Опрос {{ name }}	</title>
+	</head>
+	<body>
+		<form id="frmPoll" action="CompletePoll/" method="POST">
+			{% csrf_token %}
+			<input type='hidden' name="poll" value="{{ pid }}">
+			{% for p in poll %}
+				<strong>{{ forloop.counter }}. {{ p.name }}</strong><br>
+				<ul>
+					{% for var in p.vars %}
+						{% if p.type == 1 %}
+							<li>
+								<label>{{ var.name }}<label>
+								<input type="text" id="{{ var.name }}" name="{{ var.id }}">
+							</li>
+						{% endif %}
+						{% if p.type == 2 %}
+							<li>
+								<p><input type="checkbox" name="{{ var.id }}" value="{{ var.id }}">{{ var.name }}</p>
+							</li>
+						{% endif %}
+						{% if p.type == 3 %}
+							<li>
+								<input type="radio" id="3-{{ var.id }}" name="radio-{{ p.qid }}" value="{{ var.id }}">
+	    						<label for="3-{{ var.id }}">{{ var.name }}</label>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% endfor %}
+			<input type="submit" value="Завершить">
+		</form>
+		<br>
+	</body>
+</html>

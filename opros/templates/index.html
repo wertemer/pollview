@@ -1,0 +1,15 @@
+<html>
+	<head>
+	</head>
+	<body>
+		Активные опросы:
+		<ul>
+			{% for poll in polls %}
+				<li>
+					<a href="{% url 'poll' %}?id={{ poll.id }}">{{ poll.name }}</a><br>
+					<p>{{ poll.desc }}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>

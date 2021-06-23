@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>Список пользователей прошедших тесты</title>
+<head>
+	<body>
+		<strong>Список пользователей прошедших тесты</strong>
+		<ul>
+			{% for user in users %}
+				<li><a href="{% url 'results' %}?id={{ user.id }}">{{ user.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>

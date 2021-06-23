@@ -1,0 +1,20 @@
+<html>
+	<head>
+	</head>
+	<body>
+		{% for list in lists %}
+			Опрос: {{ list.opros }}<br>
+			{{ list.desc }}<br>
+			Вопросы:
+			{% for qq in list.questions %}
+				<ul>
+					<strong>{{ qq.vopros }}</strong><br>
+					<strong> Ответы : </strong>
+					{% for ans in qq.answ %}
+						{{ ans.otv }}: {{ ans.cnt }}<br>
+					{% endfor %}
+				</ul>
+			{% endfor %}
+		{% endfor %}
+	</body>
+</html>
